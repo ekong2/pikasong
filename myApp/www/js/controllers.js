@@ -4,10 +4,19 @@ angular.module('starter.controllers', [])
 
 .controller('ChatsCtrl', function($scope, Songs) {
   $scope.songs = Songs.all();
-  console.log($scope.songs);
+  
   $scope.remove = function(song) {
     Songs.remove(song);
-  }
+  };
+
+  $scope.upvote = function(song){
+    Songs.upvote(song);
+  };
+
+  $scope.downvote = function(song){
+    Songs.downvote(song);
+  };
+
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Songs) {
