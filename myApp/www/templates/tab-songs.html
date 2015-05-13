@@ -1,0 +1,16 @@
+<ion-view view-title="Song Queue">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-thumbnail-left item-icon-right" ng-repeat="song in songs" type="item-text-wrap" href="#/tab/songs/{{song.id}}">
+        <img ng-src="{{song.thumbnail}}">
+        <h1>{{song.title}}</h1>
+        <h2>{{song.artist}}</h2>
+        <i class="icon ion-arrow-up-a icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(song)">
+          Downvote
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

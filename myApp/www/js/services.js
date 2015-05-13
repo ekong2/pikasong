@@ -1,51 +1,56 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.factory('Songs', function() {
   // Might use a resource here that returns a JSON array
 
 
   //TODO: access firebase to gather all the songs
 
   //Populate the songs into this 
-  // Some fake testing data
-  var chats = [{
+  // Some fake testing songs
+  var songs = [{
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+    artist: 'Flume',
+    title: 'Paperthin',
+    thumbnail: 'https://i1.sndcdn.com/artworks-000004688378-o32its-t500x500.jpg',
+    votes: 10
   }, {
     id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
-  },{
+    artist: 'Zedd',
+    title: 'I Want You to Know',
+    thumbnail: 'http://3.bp.blogspot.com/-bc2Owx2R40k/VOrClGI_8QI/AAAAAAAAB2k/8gXUdDx5vjk/s1600/zedd___i_want_you_to_know__both_together__by_dsrange431-d8hx0cu.png',
+    votes: 0
+  }, {
     id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+    artist: 'Pokemon Soundtrack',
+    title: 'The Pikachu Song',
+    thumbnail: 'http://fc04.deviantart.net/fs70/f/2012/244/6/b/profile_picture_by_pikachu_song-d5d91ua.png',
+    votes: 4
   }, {
     id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'https://pbs.twimg.com/profile_images/491995398135767040/ie2Z_V6e.jpeg'
+    artist: 'Rick Ross',
+    title: 'Hustlin',
+    thumbnail: 'http://clubtone.net/_ld/3508/350888.jpg',
+    votes: 12
   }, {
     id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
+    artist: 'Kendrick Lamar',
+    title: 'Bitch, Dont Kill My Vibe',
+    thumbnail: 'http://upload.wikimedia.org/wikipedia/en/5/5e/Kendrick_Lamar_Bitch_Don\'t_Kill_My_Vibe.png',
+    votes: 7
   }];
 
   return {
     all: function() {
-      return chats;
+      return songs;
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+    remove: function(song) {
+      songs.splice(songs.indexOf(song), 1);
     },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+    get: function(songId) {
+      for (var i = 0; i < songs.length; i++) {
+        if (songs[i].id === parseInt(songId)) {
+          return songs[i];
         }
       }
       return null;
