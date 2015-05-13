@@ -30,3 +30,19 @@
   </div>
 
 </div>
+<script src="http://connect.soundcloud.com/sdk.js"></script>
+<script>
+// initialize client with app credentials
+SC.initialize({
+  client_id: '2e75744c571473e8d226078a69bba4b3',
+  redirect_uri: 'https://pikasong.firebaseapp.com/#/instructor-main'
+});
+  console.log("HELLLOOOOOO");
+// initiate auth popup
+SC.connect(function() {
+  console.log("HELLLOOOOOO");
+  SC.get('/me', function(me) { 
+    console.log('Hello, ' + me.username); 
+  });
+});
+</script>
