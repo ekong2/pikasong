@@ -54,6 +54,12 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    upvote: function(song){
+      song.votes++;
+    },
+    downvote: function(song){
+      song.votes--;
     }
   };
 });
