@@ -2,7 +2,68 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('DjCtrl', function($scope, Songs, $firebaseObject, $firebaseArray, Ref) {
+.controller('DJModeCtrl', function($scope, $firebaseArray, $firebaseObject, Ref){
+  $scope.nowPlaying = null;
+  $scope.soundObj = null;
+
+  //Initialize reference to firebase songs table/object
+  var songsRef = Ref.child('songs');
+  //Create a firebase array which holds the songs from firebase
+  var songs = $firebaseArray(songsRef);
+
+  //Initialize reference to firebase currentSong object
+  var currentSongRef = Ref.child('currentSong');
+  //Create a firebase object which holds the currentSong from firebase
+  var currentSong = $firebaseObject(currentSongRef);
+
+  //Have the currentSong object in firebase always update when $scope.nowPlaying
+  //is updated. This is 3 way binding
+  currentSong.$bindTo($scope, 'nowPlaying');
+  //If user clicks on play button
+  $scope.startPlaying = function(){
+    //If there's a song already playing, pause it
+    if ($scope.soundObj){
+      $scope.soundObj.stop();
+    }
+
+    songs.$loaded().then(function() {
+      //Search for song with max number of votes
+      if (songs.length !== 0){
+        var maxVotes = 0;
+        var indexOfMax = 0;
+        for (var i = 0; i < songs.length; i++){
+          var song = songs[i];
+          if (song.votes > maxVotes){
+            indexOfMax = i;
+            maxVotes = song.votes;
+          }
+        }
+        //Set most popular song to $scope.nowPlaying, remember this also updates
+        //the firebase currentSong due to 3 way binding
+        $scope.nowPlaying = songs[indexOfMax];
+        //Remove it from firebase's song table
+        songs.$remove(indexOfMax);
+        
+        //Soundcloud initialization
+        SC.initialize({
+          client_id: '2e75744c571473e8d226078a69bba4b3'
+        });
+
+        //API call to soundcloud to get the track.
+        SC.stream("/tracks/" + $scope.nowPlaying.id, function(sound){
+          $scope.soundObj = sound;
+          sound.play({
+            onEnd: function(){
+              $scope.startPlaying();
+            }
+          });
+        });
+      }
+    });
+  };
+})
+
+.controller('DjCtrl', function($scope, Songs, $firebaseArray, Ref) {
 
   var songsRef = Ref.child('songs');
   var songs = $firebaseArray(songsRef);
@@ -26,37 +87,20 @@ angular.module('starter.controllers', [])
             title: song.title,
             count: song.playback_count,
             thumbnail: song.artwork_url,
-            year: song.release_year
+            year: song.release_year,
+            votes: 1
           });
         }
       });
     });
 
     $scope.search.query = "";
-  }
+  };
 
   $scope.queueSong = function(song){
     songs.$add(song);
     $scope.queriedSongs.splice($scope.queriedSongs.indexOf(song),1);
-  }
-
-//   $scope.play = function(id){
-//    SC.stream("/tracks/" + id ,function(sound){
-//       // Save sound, it holds all the data needed to stop, resume, etc.
-//       $scope.soundObj = sound;
-//       sound.play({
-//       onfinish: function() {              
-//           //Start a new song or something.
-//         }
-//       });
-//   });
-// }
-
-// $scope.pause = function(){
-//   $scope.soundObj.pause();
-// }
-
-
+  };
 })
 
 .controller('ChatsCtrl', function($scope, Songs) {

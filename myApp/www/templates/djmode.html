@@ -1,0 +1,18 @@
+<ion-view view-title="DJ">
+  <ion-content>
+    <div class="list card">
+
+      <div class="item item-avatar">
+        <img src="{{nowPlaying.thumbnail}}">
+        <h2>{{nowPlaying.title}}</h2>
+        <p>{{nowPlaying.year}}</p>
+      </div>
+
+      <a class="item item-icon-left assertive" ng-click="startPlaying()">
+        <i class="icon ion-music-note"></i>
+        Start listening
+      </a>
+
+    </div>
+  </ion-content>
+</ion-view>

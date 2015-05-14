@@ -5,8 +5,14 @@
 	margin-left: 25%;
 }
 
+.col button{
+	width: 50%;
+	margin-left: 25%;
+}
+
 @media (max-width: 400px) {
 	.col img{
 		margin-top:50%;
 	}
+
 }

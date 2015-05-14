@@ -56,6 +56,15 @@ angular.module('starter', [
       }
     }
   })
+  .state('tab.dash-djmode', {
+    url: '/dash/djmode',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/djmode.html',
+        controller: 'DJModeCtrl'
+      }
+    }
+  })
 
   .state('tab.songs', {
       url: '/songs',
