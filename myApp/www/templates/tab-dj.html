@@ -1,15 +1,15 @@
 <ion-view view-title="DJ">
   <ion-content>
     <ion-list>
+    <form ng-submit='searchSong()'>
       <label class="item item-input">
-        <i class="icon ion-search placeholder-icon"></i>
-      <input ng-model="songSearch" type="search" placeholder="Search">
-
+         <i class="icon ion-search placeholder-icon"></i>
+        <input class="form-control" placeholder ="Search" type="text" ng-model="search.query"/> </br>
       </label>
+    </form>
 
 
 <!-- 
-
       <ion-item class="item-remove-animate item-thumbnail-left item-icon-right" ng-repeat="song in songs" type="item-text-wrap">
         <img ng-src="{{song.thumbnail}}">
         <h1>{{song.title}}</h1>
@@ -20,8 +20,8 @@
         <ion-option-button class="button-assertive" ng-click="downvote(song)">
           Downvote
         </ion-option-button>
-      </ion-item> -->
-  
+      </ion-item>
+   -->
 
 
 
