@@ -7,14 +7,12 @@ angular.module('starter.controllers', [])
   $scope.soundObj = null;
 
   //Initialize reference to firebase songs table/object
-  var songsRef = Ref.child('songs');
   //Create a firebase array which holds the songs from firebase
-  var songs = $firebaseArray(songsRef);
+  var songs = $firebaseArray(Ref.child('songs'));
 
   //Initialize reference to firebase currentSong object
-  var currentSongRef = Ref.child('currentSong');
   //Create a firebase object which holds the currentSong from firebase
-  var currentSong = $firebaseObject(currentSongRef);
+  var currentSong = $firebaseObject(Ref.child('currentSong'));
 
   //Have the currentSong object in firebase always update when $scope.nowPlaying
   //is updated. This is 3 way binding
@@ -53,7 +51,8 @@ angular.module('starter.controllers', [])
         SC.stream("/tracks/" + $scope.nowPlaying.id, function(sound){
           $scope.soundObj = sound;
           sound.play({
-            onEnd: function(){
+            //On finish, play next song
+            onfinish: function(){
               $scope.startPlaying();
             }
           });
@@ -78,8 +77,11 @@ angular.module('starter.controllers', [])
 
     $scope.queriedSongs = [];
 
+    //Query soundcloud to get songs from query in search form
     SC.get('/tracks', { q: $scope.search.query }, function(tracks) {
       $scope.$apply(function(){
+        //For every song returned, create an object and push it 
+        //into $scope.queriedSongs
         for (var i = 0; i < tracks.length; i++){
           var song = tracks[i];
           $scope.queriedSongs.push({
@@ -88,17 +90,34 @@ angular.module('starter.controllers', [])
             count: song.playback_count,
             thumbnail: song.artwork_url,
             year: song.release_year,
+            percent: 0,
             votes: 1
           });
         }
       });
     });
 
+    //Clear search input box
     $scope.search.query = "";
   };
 
   $scope.queueSong = function(song){
-    songs.$add(song);
+    var songAlreadyExists = false;
+    //Check to see whether song already exists or not
+    for (var i = 0; i < songs.length; i++){
+      var queuedSong = songs[i];
+      //If it does, we update its vote count and update firebase
+      if (queuedSong.id === song.id){
+        queuedSong.votes++;
+        songs.$save(i);
+        songAlreadyExists = true;
+      }
+    }
+    //If song doesn't already exist in Firebase, add it
+    if (!songAlreadyExists){
+      songs.$add(song);
+    }
+    //Remove song from the queriedSongs list
     $scope.queriedSongs.splice($scope.queriedSongs.indexOf(song),1);
   };
 })
