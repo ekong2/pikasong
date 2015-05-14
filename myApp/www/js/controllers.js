@@ -2,7 +2,11 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('DjCtrl', function($scope, Songs) {
+.controller('DjCtrl', function($scope, Songs, $firebaseObject, $firebaseArray, Ref) {
+
+  var songsRef = Ref.child('songs');
+  var songs = $firebaseArray(songsRef);
+
   $scope.queriedSongs = [];
   $scope.search = {};
 
@@ -32,7 +36,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.queueSong = function(song){
-    //Add song to firebase here
+    songs.$add(song);
     $scope.queriedSongs.splice($scope.queriedSongs.indexOf(song),1);
   }
 
