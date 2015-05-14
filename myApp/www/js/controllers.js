@@ -125,8 +125,6 @@ angular.module('starter.controllers', [])
 .controller('ChatsCtrl', function($scope, $window, $rootScope, Songs) {
   $scope.songs = Songs.all();
 
-  console.log($window)
-
   $scope.remove = function(song) {
     Songs.remove(song);
     $scope.computePercents($scope.songs);
@@ -142,24 +140,20 @@ angular.module('starter.controllers', [])
     $scope.computePercents($scope.songs);
   };
 
-  // $scope.sort = function(){
-  //   $scope.songs.sort(function(a, b){return b.votes-a.votes});
-  // };
-
   $scope.computePercents = function(songs){
     var totalVotes = Songs.total();
     var maxVotes = Songs.maxVotes($scope.songs);
     var normalizeFactor = maxVotes === 0 ? 0 : 0.9/(maxVotes);
-
+    console.log('totalVotes', totalVotes);
     for(var i = 0; i < songs.length; i++){
-      songs[i].percent = totalVotes === 0 ? 0 : Math.max(songs[i].votes, 0) / totalVotes;
+      songs[i].percent = totalVotes < 1 ? 0 : Math.max(songs[i].votes, 0) / totalVotes;
     }
   };
 
-  $scope.$watch('votes', function(){
-     $window.clearTimeout($scope.timer);
-     $scope.timer = $window.setTimeout(rearrange, 100);
-   });
+  // $scope.$watch('votes', function(){
+  //    $window.clearTimeout($scope.timer);
+  //    $scope.timer = $window.setTimeout(rearrange, 100);
+  //  });
 
   // function rearrange(){
   //     $('.item').each(function(idx, el){
@@ -180,6 +174,7 @@ angular.module('starter.controllers', [])
   //   }
 
   $scope.computePercents($scope.songs);
+  
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Songs) {
