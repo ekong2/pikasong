@@ -76,21 +76,12 @@ angular.module('starter', [
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.dj', {
+    url: '/dj',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  })
-  .state('tab.account-dj', {
-    url: '/account/dj',
-    views: {
-      'tab-account': {
-        templateUrl: "templates/tab-dj.html",
-        controller: "DjCtrl"
+      'tab-dj': {
+        templateUrl: 'templates/tab-dj.html',
+        controller: 'DjCtrl'
       }
     }
   });

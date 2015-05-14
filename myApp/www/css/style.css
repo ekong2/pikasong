@@ -1,1 +1,12 @@
 /* Empty. Add your own CSS if you like */
+
+.col img{
+	width: 50%;
+	margin-left: 25%;
+}
+
+@media (max-width: 400px) {
+	.col img{
+		margin-top:50%;
+	}
+}
