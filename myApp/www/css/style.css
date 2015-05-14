@@ -1,6 +1,6 @@
 /* Empty. Add your own CSS if you like */
 
-.col img{
+.col img {
 	width: 50%;
 	margin-left: 25%;
 }
@@ -11,8 +11,71 @@
 }
 
 @media (max-width: 400px) {
-	.col img{
+	.col img {
 		margin-top:50%;
-	}
+  }
+}
 
+h1, .h1 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 550px) {
+  h1, .h1 {
+  font-size: 25px;
+  margin-bottom: 5px;
+  }
+}
+
+.bar.bar-stable .title {
+  font-size: 28px;
+  color: #455A64;
+}
+
+h1, .h1 {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: #455A64;
+}
+
+.item-icon-right .icon-accessory {
+  right: 40px;
+}
+
+.item-icon-left .icon-accessory, .item-icon-right .icon-accessory {
+  color: #607D8B;
+  font-size: 50px;
+}
+
+.button {
+  padding: 30px;
+}
+
+.button.button-assertive {
+  border-color: #CFD8DC;
+  background-color: #CFD8DC;
+}
+
+.item {
+/*  position: absolute;
+  left: 0;
+  width: 500px;
+  height: 50px;
+  text-align: left;
+  color: #555;
+  padding: 15px;
+  background-color: #eee;
+  border: solid 1px #999;*/
+  -webkit-transition: all 2s ease-out, opacity 1s;
+  -moz-transition: all 2s ease-out, opacity 1s;
+}
+
+.moving {
+  opacity: 0.25;
+  z-index: 10;
 }
