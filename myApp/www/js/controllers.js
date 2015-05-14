@@ -121,22 +121,48 @@ angular.module('starter.controllers', [])
     $scope.computePercents($scope.songs);
   };
 
-  $scope.sort = function(songs){
-    songs.sort(function(a, b){return b.votes-a.votes});
-  }
+  // $scope.sort = function(){
+  //   $scope.songs.sort(function(a, b){return b.votes-a.votes});
+  // };
 
   $scope.computePercents = function(songs){
     var totalVotes = Songs.total();
+    var maxVotes = Songs.maxVotes($scope.songs);
+    var normalizeFactor = maxVotes === 0 ? 0 : 0.9/(maxVotes);
     for(var i = 0; i < songs.length; i++){
-      songs[i].percent = totalVotes > 0 ? Math.max(songs[i].votes/totalVotes, 0) : 0;
+      songs[i].percent = Math.max(songs[i].votes, 0) * normalizeFactor;
     }
   };
-  $scope.sort($scope.songs);
-  $scope.computePercents($scope.songs);
 
-  //setInterval(function(song)$scope.sort($scope.songs), 5000);
+  // $scope.timer = 0;
+
+  // $scope.$watch('votes', function(){
+  //   $window.clearTimeout($scope.timer);
+  //   $scope.timer = $window.setTimeout(rearrange, 100);
+  // });
+
+  // function rearrange(){
+  //     $('.item').each(function(idx, el){
+  //       var $el = $(el);        
+  //       var newTop = idx * $config.OFFSET_Y;
+
+  //       if (newTop != parseInt($el.css('top'))) {
+  //         $el.css({
+  //           'top': newTop
+  //         })
+  //         .one('webkitTransitionEnd', function (evt){
+  //           $(evt.target).removeClass('moving');
+  //         })
+  //         .addClass('moving');  
+  //       }
+        
+  //     });
+  //   }
+
+  $scope.computePercents($scope.songs);
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Songs) {
   $scope.song = Songs.get($stateParams.songId);
 });
+

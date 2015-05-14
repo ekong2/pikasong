@@ -1,6 +1,6 @@
 /* Empty. Add your own CSS if you like */
 
-.col img{
+.col img {
 	width: 50%;
 	margin-left: 25%;
 }
@@ -11,9 +11,22 @@
 }
 
 @media (max-width: 400px) {
-	.col img{
+	.col img {
 		margin-top:50%;
-	}
+  }
+}
+
+h1, .h1 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 550px) {
+  h1, .h1 {
+  font-size: 25px;
+  margin-bottom: 5px;
+  }
 }
 
 .bar.bar-stable .title {
@@ -46,4 +59,14 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .button.button-assertive {
   border-color: #CFD8DC;
   background-color: #CFD8DC;
+}
+
+.item {
+  -webkit-transition: all 1s ease-out, opacity 1s;
+  -moz-transition: all 1s ease-out, opacity 1s;
+}
+
+.moving {
+  opacity: 0.25;
+  z-index: 10;
 }
