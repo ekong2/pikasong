@@ -1,7 +1,7 @@
 <ion-view view-title="Song Queue">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="song in songs | orderBy : 'votes' : true track by song.id" class="item-remove-animate item-thumbnail-left item-icon-right song" type="item-text-wrap">
+      <ion-item ng-animate="'animate'" ng-repeat="song in songs | orderBy : 'votes' : true track by song.id" class="item-remove-animate item-thumbnail-left item-icon-right song" type="item-text-wrap">
           <img ng-src="{{song.thumbnail}}">
           <h2>{{song.title}}</h2>
           <div style="width: {{song.percent*100}}%; transition: width 1s; background: #FFC107;">&nbsp;</div>

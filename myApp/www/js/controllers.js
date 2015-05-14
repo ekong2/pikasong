@@ -103,8 +103,10 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatsCtrl', function($scope, Songs) {
+.controller('ChatsCtrl', function($scope, $window, $rootScope, Songs) {
   $scope.songs = Songs.all();
+
+  console.log($window)
 
   $scope.remove = function(song) {
     Songs.remove(song);
@@ -129,17 +131,16 @@ angular.module('starter.controllers', [])
     var totalVotes = Songs.total();
     var maxVotes = Songs.maxVotes($scope.songs);
     var normalizeFactor = maxVotes === 0 ? 0 : 0.9/(maxVotes);
+
     for(var i = 0; i < songs.length; i++){
-      songs[i].percent = Math.max(songs[i].votes, 0) * normalizeFactor;
+      songs[i].percent = totalVotes === 0 ? 0 : Math.max(songs[i].votes, 0) / totalVotes;
     }
   };
 
-  // $scope.timer = 0;
-
-  // $scope.$watch('votes', function(){
-  //   $window.clearTimeout($scope.timer);
-  //   $scope.timer = $window.setTimeout(rearrange, 100);
-  // });
+  $scope.$watch('votes', function(){
+     $window.clearTimeout($scope.timer);
+     $scope.timer = $window.setTimeout(rearrange, 100);
+   });
 
   // function rearrange(){
   //     $('.item').each(function(idx, el){
