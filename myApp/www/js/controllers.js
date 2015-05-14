@@ -3,9 +3,22 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope) {})
 
 .controller('DjCtrl', function($scope, Songs) {
-  $scope.settings = {
-    djRad: true
-  };
+
+  $scope.search = {};
+
+  $scope.searchSong = function(){
+    SC.initialize({
+      client_id: '2e75744c571473e8d226078a69bba4b3'
+    });
+
+    SC.get('/tracks', { q: $scope.search.query }, function(tracks) {
+      console.log(tracks);
+    });
+
+     $scope.search.query = "";
+  }
+
+
   $scope.songs = Songs.all();
 //   $scope.play = function(id){
 //    SC.stream("/tracks/" + id ,function(sound){
