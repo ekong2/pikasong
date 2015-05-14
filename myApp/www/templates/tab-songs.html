@@ -1,15 +1,14 @@
 <ion-view view-title="Song Queue">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-thumbnail-left item-icon-right" ng-repeat="song in songs" type="item-text-wrap">
-        <img ng-src="{{song.thumbnail}}">
-        <h1>{{song.title}}</h1>
-        <h2>{{song.artist}}</h2>
-        <p>{{song.votes}}</p>
-        <i class="icon ion-arrow-up-a icon-accessory" ng-click="upvote(song)"></i>
-
+      <ion-item ng-repeat="song in songs" class="item-remove-animate item-thumbnail-left item-icon-right song" type="item-text-wrap">
+          <img ng-src="{{song.thumbnail}}">
+          <h1>{{song.title}}</h1>
+          <h2>{{song.artist}}</h2>
+          <div style="width: {{song.percent*100}}%; transition: width 1s; background: #FFC107;">&nbsp;</div>
+          <i class="icon ion-arrow-up-a icon-accessory" ng-click="upvote(song)"></i>
         <ion-option-button class="button-assertive" ng-click="downvote(song)">
-          Downvote
+          <i class="ion-arrow-down-a icon-accessory" ng-click="upvote(song)"></i>
         </ion-option-button>
       </ion-item>
     </ion-list>

@@ -105,19 +105,36 @@ angular.module('starter.controllers', [])
 
 .controller('ChatsCtrl', function($scope, Songs) {
   $scope.songs = Songs.all();
-  
+
   $scope.remove = function(song) {
     Songs.remove(song);
+    $scope.computePercents($scope.songs);
   };
 
   $scope.upvote = function(song){
     Songs.upvote(song);
+    $scope.computePercents($scope.songs);
   };
 
   $scope.downvote = function(song){
     Songs.downvote(song);
+    $scope.computePercents($scope.songs);
   };
 
+  $scope.sort = function(songs){
+    songs.sort(function(a, b){return b.votes-a.votes});
+  }
+
+  $scope.computePercents = function(songs){
+    var totalVotes = Songs.total();
+    for(var i = 0; i < songs.length; i++){
+      songs[i].percent = totalVotes > 0 ? Math.max(songs[i].votes/totalVotes, 0) : 0;
+    }
+  };
+  $scope.sort($scope.songs);
+  $scope.computePercents($scope.songs);
+
+  //setInterval(function(song)$scope.sort($scope.songs), 5000);
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Songs) {

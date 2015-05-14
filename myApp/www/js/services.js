@@ -40,6 +40,10 @@ angular.module('starter.services', [])
     votes: 7
   }];
 
+  var totalVotes = songs.reduce(function(sum, song){
+    return sum + song.votes;
+  }, 0);
+
   return {
     all: function() {
       return songs;
@@ -57,9 +61,14 @@ angular.module('starter.services', [])
     },
     upvote: function(song){
       song.votes++;
+      totalVotes++;
     },
     downvote: function(song){
       song.votes--;
+      totalVotes--;
+    },
+    total: function(){
+      return totalVotes;
     }
   };
 });
