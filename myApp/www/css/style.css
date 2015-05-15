@@ -71,8 +71,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   padding: 15px;
   background-color: #eee;
   border: solid 1px #999;*/
-  -webkit-transition: all 2s ease-out, opacity 1s;
-  -moz-transition: all 2s ease-out, opacity 1s;
+  -webkit-transition: all 1s ease-out, opacity 1s;
+  -moz-transition: all 1s ease-out, opacity 1s;
 }
 
 .moving {
