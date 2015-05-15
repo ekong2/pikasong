@@ -1,9 +1,22 @@
 /* Empty. Add your own CSS if you like */
 
-.col img {
-  width: 70%;
-  margin-left: 15%;
-  margin-top: 10%;
+body {
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+.row, .item-complex.item-icon-right .item-content {
+  background:#FFF;
+}
+.col-50 {
+  text-align:center;
+}
+
+.col-50 img {
+  width:100%;
+  margin-top:50px;
+  max-width:400px;
+  margin: 50 auto;
 }
 
 .col button{
@@ -23,6 +36,8 @@ h1, .h1 {
   margin-bottom: 5px;
   }
 }
+
+
 
 .bar.bar-stable .title {
   font-size: 28px;
@@ -94,17 +109,63 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 
-.title-image, .soundCloudLogo {
+ .soundCloudLogo, .leftLogo {
   z-index:100;
   position:absolute; 
-  margin-top: 8px;
-  height: 27px;
-}
-
-.soundCloudLogo  {
- right:10px;
+  height: 35px;
 }
 
 .title-image {
+  position:relative;
+  height:35px;
+  width:35px;
+  float:left;
+  background-color:#323233;
+  padding-top:0px;
+  border-radius:20px;
+  background-image: url("/./img/pika.png");
+  background-size:75%;
+  background-position:6px;
+  background-repeat: no-repeat;
+
+}
+
+.pane, .view{
+  background:#2196F3;
+}
+.bar.bar-stable {
+  background:#2196F3;
+  border-color:transparent;
+  height:50px;
+}
+
+.djList {
+margin-top:40px;
+}
+
+.logoText {
+  float:left;
+  margin-left:5px;
+  padding-top:7px;
+  font-weight:bold;
+color: #FFF;
+  font-size: 30px;
+ 
+}
+.soundCloudLogo  {
+    margin-top: 8px;
+ right:10px;
+}
+
+.bar .button.back-button {
+  position:absolute;
+  top:50px;
+  color:white;
+}
+
+
+
+.leftLogo{
+  margin-top:6px;
   left:10px;
 }

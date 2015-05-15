@@ -1,9 +1,9 @@
-<ion-view view-title="Player">
+<ion-view view-title="">
   <ion-content class="center">
     <div class="row">
-      <div class="col">
+      <div class="currentSong col-50 col-offset-25">
         <img src={{nowPlaying.thumbnail}}>
-        <div class="songTitle">
+        <div class="col-100 ">
           <h4>{{nowPlaying.title}}</h4>
           <h5>Uploaded By: {{nowPlaying.uploader || 'anon'}}</h5>
         </div>
@@ -14,6 +14,7 @@
         <button class="button button-energized" ui-sref="tab.dash-djmode">DJ Mode</button>
       </div>
     </div> -->
+
   <div class="soundcloud">
     <img class="soundcloud-icon" src="/../img/soundcloud.png">
     <h5 class="credits">Powered by SoundCloud</h5>
