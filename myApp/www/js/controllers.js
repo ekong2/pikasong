@@ -3,6 +3,7 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope, $firebaseObject, Ref, $firebase, $state, $rootScope) {
 
   $rootScope.loggedIn = false;
+
   $scope.authUser = function(){
     Ref.authWithOAuthPopup("github", function(error, authData) {
       if (error) {
@@ -23,8 +24,11 @@ angular.module('starter.controllers', [])
         });
       }
     });
-  }
+  };
 
+  $scope.goToDj = function(){
+    $state.go('tab.dash-djmode');
+  }
   var currentSong = $firebaseObject(Ref.child('currentSong'));
   currentSong.$bindTo($scope, 'nowPlaying');
 
