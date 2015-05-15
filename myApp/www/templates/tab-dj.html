@@ -1,4 +1,4 @@
-<ion-view view-title="DJ">
+<ion-view view-title="Search">
   <ion-content>
     <form ng-submit='searchSong()'>
       <label class="item item-input">
@@ -10,9 +10,9 @@
     <ion-list>
       <ion-item class="item-remove-animate item-thumbnail-left item-icon-right" ng-repeat="song in queriedSongs" ng-click="queueSong(song)" type="item-text-wrap">
         <img ng-src="{{song.thumbnail}}">
-        <h1>{{song.title}}</h1>
-        <h2>Play count: {{song.count}}</h2>
-        <p>{{song.year}}</p>
+        <h2>{{song.title}}</h2>
+<!--         <h3>Play count: {{song.count}}</h3>
+        <p>{{song.year}}</p> -->
       </ion-item>
     </ion-list>
   </ion-content>
