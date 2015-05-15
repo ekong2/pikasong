@@ -2,7 +2,7 @@
   <ion-content class="center">
     <div class="row">
       <div class="currentSong col-50 col-offset-25">
-        <img src={{nowPlaying.thumbnail}}>
+        <img src= "{{nowPlaying.thumbnail ? nowPlaying.thumbnail : './img/pika.png' }}" >
         <div class="col-100 ">
           <h4>{{nowPlaying.title}}</h4>
           <h5>Uploaded By: {{nowPlaying.uploader || 'anon'}}</h5>
