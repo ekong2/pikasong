@@ -62,15 +62,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .item {
-/*  position: absolute;
-  left: 0;
-  width: 500px;
-  height: 50px;
-  text-align: left;
-  color: #555;
-  padding: 15px;
-  background-color: #eee;
-  border: solid 1px #999;*/
   -webkit-transition: all 1s ease-out, opacity 1s;
   -moz-transition: all 1s ease-out, opacity 1s;
 }
@@ -95,7 +86,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-right: 10px;
 }
 
-.credits, .soundcloud {
+.soundcloud {
+  position: absolute;
   width: 200px;
   height: auto;
   vertical-align: middle;

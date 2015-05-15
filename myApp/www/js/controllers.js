@@ -130,7 +130,9 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ChatsCtrl', function($scope, Songs) {
+
   $scope.songs = Songs.all();
+  $scope.voteReady = true;
 
   //Remove a song from the vote page
   $scope.remove = function(song) {
@@ -140,14 +142,21 @@ angular.module('starter.controllers', [])
 
   //Upvote a song
   $scope.upvote = function(song){
-    Songs.upvote(song);
-    $scope.computePercents($scope.songs);
+    console.log($scope.voteReady)
+    if($scope.voteReady){
+      Songs.upvote(song);
+      $scope.computePercents($scope.songs);
+      $scope.voteReady = false;
+    }
   };
 
   //Downvote a song
   $scope.downvote = function(song){
-    Songs.downvote(song);
-    $scope.computePercents($scope.songs);
+    if($scope.voteReady){
+      Songs.downvote(song);
+      $scope.computePercents($scope.songs);
+      $scope.voteReady = false;
+    }
   };
 
   //Computes the percent and normalize for display purposes
@@ -166,6 +175,12 @@ angular.module('starter.controllers', [])
     $scope.computePercents($scope.songs);
   });
   
+  //Every 30 seconds allow people to vote again
+  setInterval(function(){
+    $scope.voteReady = true;
+    $scope.$apply();
+  }.bind($scope), 15000);
+
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Songs) {

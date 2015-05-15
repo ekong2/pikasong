@@ -5,7 +5,7 @@
           <img ng-src="{{song.thumbnail}}">
           <h2>{{song.title}}</h2>
           <div style="width: {{song.percent*100}}%; transition: width 1s; background: #FFC107;">&nbsp;</div>
-          <i class="icon ion-arrow-up-a icon-accessory" ng-click="upvote(song)"></i>
+          <i class="icon ion-arrow-up-a icon-accessory" ng-click="upvote(song)" ng-style="voteReady && {'color': '#1AA140'} || {'color': '#607D8B'}"></i>
         <ion-option-button class="button-assertive" ng-click="downvote(song)">
           <i class="ion-arrow-down-a icon-accessory" ng-click="upvote(song)"></i>
         </ion-option-button>
