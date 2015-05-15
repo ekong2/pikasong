@@ -1,13 +1,45 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $firebaseObject, Ref) {
+.controller('DashCtrl', function($scope, $firebaseObject, Ref, $firebase, $state, $rootScope) {
 
+  $rootScope.loggedIn = false;
+
+  $scope.authUser = function(){
+    Ref.authWithOAuthPopup("github", function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+
+        //Take down the list of approved DJ List
+        var djList = $firebaseObject(Ref.child('dj'));
+
+        //Once loaded, check if the github ID matches a DJ on the approved DJ list
+        djList.$loaded().then(function(){
+
+          //If listed, redirect to the dj-mode page
+          if(djList[authData.uid] !== undefined){
+            $rootScope.loggedIn = true;
+            $state.go('tab.dash-djmode');
+          }
+        });
+      }
+    });
+  };
+
+  $scope.goToDj = function(){
+    $state.go('tab.dash-djmode');
+  }
   var currentSong = $firebaseObject(Ref.child('currentSong'));
   currentSong.$bindTo($scope, 'nowPlaying');
 
 })
 
-.controller('DJModeCtrl', function($scope, $firebaseArray, $firebaseObject, Ref){
+.controller('DJModeCtrl', function($scope, $firebaseArray, $firebaseObject, Ref, $state, $rootScope){
+
+  if(!$rootScope.loggedIn){
+    $state.go('tab.dash');
+  }
+
   $scope.nowPlaying = null;
   $scope.soundObj = null;
 
