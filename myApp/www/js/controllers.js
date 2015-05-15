@@ -164,7 +164,7 @@ angular.module('starter.controllers', [])
     var totalVotes = Songs.total();
     // //Normalization factor not used right now, but will turn back on later
     var maxVotes = Songs.maxVotes($scope.songs);
-    var normalizeFactor = maxVotes === 0 ? 0 : Math.floor(totalVotes/maxVotes * 5) / 5;
+    var normalizeFactor = maxVotes === 0 ? 0 : 0.8 * Math.floor(totalVotes/maxVotes * 5) / 5;
     for(var i = 0; i < songs.length; i++){
       songs[i].percent = totalVotes < 1 ? 0 : Math.max(songs[i].votes, 0) * normalizeFactor / totalVotes;
     }
