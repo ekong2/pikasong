@@ -2,7 +2,7 @@
   <ion-content>
     <ion-list>
       <ion-item ng-animate="'animate'" ng-repeat="song in songs | orderBy : 'votes' : true track by song.id" class="item-remove-animate item-thumbnail-left item-icon-right song" type="item-text-wrap">
-          <img ng-src="{{song.thumbnail}}">
+          <img ng-src="{{song.thumbnail ? song.thumbnail : './img/pika.png' }}">
           <h2>{{song.title}}</h2>
           <div style="width: {{song.percent*100}}%; transition: width 1s; background: #FFC107;">&nbsp;</div>
           <i class="icon ion-arrow-up-a icon-accessory" ng-click="upvote(song)" ng-style="voteReady && {'color': '#1AA140'} || {'color': '#607D8B'}"></i>

@@ -75,15 +75,6 @@ angular.module('starter', [
         }
       }
     })
-    .state('tab.song-detail', {
-      url: '/songs/:songId',
-      views: {
-        'tab-songs': {
-          templateUrl: 'templates/song-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
 
   .state('tab.dj', {
     url: '/dj',

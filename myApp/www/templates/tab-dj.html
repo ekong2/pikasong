@@ -9,10 +9,8 @@
 
     <ion-list>
       <ion-item class="item-remove-animate item-thumbnail-left item-icon-right" ng-repeat="song in queriedSongs" ng-click="queueSong(song)" type="item-text-wrap">
-        <img ng-src="{{song.thumbnail}}">
+        <img ng-src="{{song.thumbnail ? song.thumbnail : './img/pika.png'}}">
         <h2>{{song.title}}</h2>
-<!--         <h3>Play count: {{song.count}}</h3>
-        <p>{{song.year}}</p> -->
       </ion-item>
     </ion-list>
   </ion-content>
