@@ -4,6 +4,10 @@ body {
     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+
+.row, .item-complex.item-icon-right .item-content {
+  background:#EEE;
+}
 .col-50 {
   text-align:center;
 }
