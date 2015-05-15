@@ -1,19 +1,14 @@
 /* Empty. Add your own CSS if you like */
 
 .col img {
-	width: 50%;
-	margin-left: 25%;
+  width: 70%;
+  margin-left: 15%;
+  margin-top: 10%;
 }
 
 .col button{
 	width: 50%;
 	margin-left: 25%;
-}
-
-@media (max-width: 400px) {
-	.col img {
-		margin-top:50%;
-  }
 }
 
 h1, .h1 {
@@ -37,6 +32,11 @@ h1, .h1 {
 h1, .h1 {
   font-size: 30px;
   margin-bottom: 5px;
+}
+
+.item h2 {
+  font-size: 20px;
+  margin: 29px 0 2px 0;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -78,4 +78,26 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .moving {
   opacity: 0.25;
   z-index: 10;
+}
+
+.songTitle {
+  overflow: visible;
+  vertical-align: middle;
+  width: 70%;
+  margin-left: 15%;
+}
+
+.soundcloud-icon {
+  display: inline-block;
+  float: left;
+  height: 19px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.credits, .soundcloud {
+  width: 200px;
+  height: auto;
+  vertical-align: middle;
+  margin: 0 auto;
 }
