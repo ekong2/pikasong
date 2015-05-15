@@ -101,7 +101,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-right: 10px;
 }
 
-.soundcloud {
+.soundcloud, .login {
   width: 200px;
   height: auto;
   vertical-align: middle;
@@ -140,7 +140,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .djList {
-margin-top:40px;
+  margin-top:40px;
 }
 
 .logoText {
@@ -148,7 +148,7 @@ margin-top:40px;
   margin-left:5px;
   padding-top:7px;
   font-weight:bold;
-color: #FFF;
+  color: #FFF;
   font-size: 30px;
  
 }
@@ -163,9 +163,14 @@ color: #FFF;
   color:#323233;
 }
 
-
-
 .leftLogo{
   margin-top:6px;
   left:10px;
+}
+
+.loginButton{
+  margin-top: 20px;
+  height: 30px;
+  width: 200px;
+  padding: 0 30px;
 }

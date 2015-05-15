@@ -1,8 +1,8 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $firebaseObject, Ref, $firebase, $state) {
+.controller('DashCtrl', function($scope, $firebaseObject, Ref, $firebase, $state, $rootScope) {
 
-  var loggedIn = false;
+  $rootScope.loggedIn = false;
   $scope.authUser = function(){
     Ref.authWithOAuthPopup("github", function(error, authData) {
       if (error) {
@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
 
           //If listed, redirect to the dj-mode page
           if(djList[authData.uid] !== undefined){
-            loggedIn = true;
+            $rootScope.loggedIn = true;
             $state.go('tab.dash-djmode');
           }
         });
@@ -30,7 +30,12 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('DJModeCtrl', function($scope, $firebaseArray, $firebaseObject, Ref){
+.controller('DJModeCtrl', function($scope, $firebaseArray, $firebaseObject, Ref, $state, $rootScope){
+
+  if(!$rootScope.loggedIn){
+    $state.go('tab.dash');
+  }
+
   $scope.nowPlaying = null;
   $scope.soundObj = null;
 
