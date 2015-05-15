@@ -122,59 +122,41 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatsCtrl', function($scope, $window, $rootScope, Songs) {
+.controller('ChatsCtrl', function($scope, Songs) {
   $scope.songs = Songs.all();
 
+  //Remove a song from the vote page
   $scope.remove = function(song) {
     Songs.remove(song);
     $scope.computePercents($scope.songs);
   };
 
+  //Upvote a song
   $scope.upvote = function(song){
     Songs.upvote(song);
     $scope.computePercents($scope.songs);
   };
 
+  //Downvote a song
   $scope.downvote = function(song){
     Songs.downvote(song);
     $scope.computePercents($scope.songs);
   };
 
+  //Computes the percent and normalize for display purposes
   $scope.computePercents = function(songs){
     var totalVotes = Songs.total();
-    var maxVotes = Songs.maxVotes($scope.songs);
-    var normalizeFactor = maxVotes === 0 ? 0 : 0.9/(maxVotes);
+    // //Normalization factor not used right now, but will turn back on later
+    //var maxVotes = Songs.maxVotes($scope.songs);
+    //var normalizeFactor = maxVotes === 0 ? 0 : 0.9/(maxVotes);
     console.log('totalVotes', totalVotes);
     for(var i = 0; i < songs.length; i++){
       songs[i].percent = totalVotes < 1 ? 0 : Math.max(songs[i].votes, 0) / totalVotes;
     }
   };
 
-  // $scope.$watch('votes', function(){
-  //    $window.clearTimeout($scope.timer);
-  //    $scope.timer = $window.setTimeout(rearrange, 100);
-  //  });
-
-  // function rearrange(){
-  //     $('.item').each(function(idx, el){
-  //       var $el = $(el);        
-  //       var newTop = idx * $config.OFFSET_Y;
-
-  //       if (newTop != parseInt($el.css('top'))) {
-  //         $el.css({
-  //           'top': newTop
-  //         })
-  //         .one('webkitTransitionEnd', function (evt){
-  //           $(evt.target).removeClass('moving');
-  //         })
-  //         .addClass('moving');  
-  //       }
-        
-  //     });
-  //   }
-
+  //Inititalize the percentages to display
   $scope.computePercents($scope.songs);
-  
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Songs) {

@@ -2,8 +2,10 @@ angular.module('starter.services', [])
 
 .factory('Songs', function($firebaseArray, Ref) {
 
+  //Import firebase song array
   var songs = $firebaseArray(Ref.child('songs'));
 
+  //Compute the total votes
   function computeTotal(){
     return songs.reduce(function(sum, song){
       return sum + song.votes;
@@ -25,17 +27,21 @@ angular.module('starter.services', [])
       }
       return null;
     },
+    //Upvote a song and save to firebase
     upvote: function(song){
       song.votes++;
       songs.$save(song);
     },
+    //Downvote a song and save to firebase
     downvote: function(song){
       song.votes--;
       songs.$save(song);
     },
+    //Return the total number of votes
     total: function(){
       return computeTotal();
     },
+    //Return the song with the max number of votes
     maxVotes: function(songs){
       return songs.reduce(function(max, song){
         return Math.max(max, song.votes);
