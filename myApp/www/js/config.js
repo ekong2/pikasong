@@ -2,4 +2,4 @@
 angular.module('firebase.config', [])
   .constant('FBURL', 'https://pikasong.firebaseio.com')
   .constant('SIMPLE_LOGIN_PROVIDERS', ['github'])
-  .constant('loginRedirectPath', '/dash/djmode');
+  .constant('loginRedirectPath', '/dash/dj-mode');
