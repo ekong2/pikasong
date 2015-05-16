@@ -42,7 +42,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('DashCtrl', function($scope, $firebaseObject, Ref) {
+.controller('DashCtrl', function($scope, $firebaseObject, Ref, $rootScope, $state) {
 
   $rootScope.loggedIn = false;
 

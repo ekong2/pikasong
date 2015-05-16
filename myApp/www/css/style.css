@@ -173,6 +173,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   height: 30px;
   width: 200px;
   padding: 0 30px;
+}
 
 .centered {
   text-align: center;
@@ -182,4 +183,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   padding: 0;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.tutorial {
+  width: 100%;
 }
