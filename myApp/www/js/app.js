@@ -36,6 +36,12 @@ angular.module('starter', [
   // Each state's controller can be found in controllers.js
   $stateProvider
 
+  .state('intro', {
+    url: '/',
+    templateUrl: 'templates/intro.html',
+    controller: 'IntroCtrl'
+  })
+
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: "/tab",
@@ -84,6 +90,6 @@ angular.module('starter', [
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/');
 
 });

@@ -1,6 +1,48 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $firebaseObject, Ref, $firebase, $state, $rootScope) {
+.controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
+  	$scope.startApp = function() {
+
+    	$state.go('tab.dash');
+
+    	// Set a flag that we finished the tutorial
+    	window.localStorage['didTutorial'] = true;
+  	};
+
+	$scope.nextSlide = function() {
+    	$ionicSlideBoxDelegate.next();
+  	}
+  	
+    // Check if the user already did the tutorial and skip it if so
+	if(window.localStorage['didTutorial'] === "true") {
+	    console.log('Skip intro');
+	    $scope.startApp();
+	}
+
+})
+
+.controller('tutorialViewCtrl', function($scope){
+	$scope.text = 'Touch on each tab to see what they do!';
+	$scope.state = '';
+
+	$scope.playingTutorial = function(){
+		$scope.text = "Check out the song that's currently playing";
+		$scope.state = "playing";
+	};
+
+	$scope.voteTutorial = function(){
+		$scope.text = "Upvote songs you like";
+		$scope.state = "vote";
+	};
+
+	$scope.searchTutorial = function(){
+		$scope.text = "Search for songs on SoundCloud to add to the queue";
+		$scope.state = "search";
+	};
+
+})
+
+.controller('DashCtrl', function($scope, $firebaseObject, Ref) {
 
   $rootScope.loggedIn = false;
 
