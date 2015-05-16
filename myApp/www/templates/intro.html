@@ -1,0 +1,82 @@
+<ion-slide-box>
+
+  <!-- Slide page one -->
+  <ion-slide>
+    <h1>Tutorial 1</h1>
+    <div class="list card">
+      <div class="item item-body">
+        <img class="full-image" src="./img/pika.png">
+        <h2 class="centered">Welcome to Pikasong!</h2>
+        <p class="centered">Let's get started</p>
+      </div>
+    </div>
+  </ion-slide>
+
+  <!-- Slide page two -->
+  <ion-slide>
+    <h1>Tutorial 2</h1>
+    
+    <div class="list card" ng-controller="tutorialViewCtrl">
+      <div class="item item-avatar">
+        <img src="./img/pika.jpg">
+        <h2>Crowdsource your DJ!</h2>
+      </div>
+
+      <div class="item item-body">
+      <div class="centered">
+        {{text}}
+        <div ng-show="state==='playing'">
+        <div class="row">
+          <div class="col">
+            <img src='./img/pika.png'>
+            <div class="songTitle">
+              <h4>The Pika Pika Song</h4>
+              <h5>Uploaded By: The Pika Pika Team</h5>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div ng-show="state==='vote'">
+        <img class="tutorial" src="./img/tutorial-song1.png">
+        Swipe right in order to downvote
+        <img class="tutorial" src="./img/tutorial-song2.png">
+        </div>
+        <div ng-show="state==='search'">
+        <img src="./img/soundcloud.png">
+        </div>
+      </div>
+      </div>
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" ng-click="playingTutorial()">
+          <i class="icon ion-headphone"></i>
+          Playing
+        </a>
+        <a class="tab-item" ng-click="voteTutorial()">
+          <i class="icon ion-ios-bolt-outline"></i>
+          Vote
+        </a>
+        <a class="tab-item" ng-click="searchTutorial()">
+          <i class="icon ion-search"></i>
+          Search
+        </a>
+      </div>
+    </div>
+  </ion-slide>
+
+  <!-- Slide page three -->
+  <ion-slide>
+    <h1>Tutorial 3</h1>
+    <div class="card">
+      <div class="item item-text-wrap centered">
+        You're all set!
+      </div>
+    </div>
+    <div class="row">
+    <div class="col-50 col-offset-25">
+    <button class="button button-energized centeredButton" ng-click="startApp()">Let's pikasong!!</button>
+    </div>
+    </div>
+  </ion-slide>
+
+</ion-slide-box>
