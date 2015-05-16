@@ -188,3 +188,30 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .tutorial {
   width: 100%;
 }
+
+.playing {
+  height:150px;
+  width:auto;
+}
+
+.full-image {
+  margin-top:10px!important;
+  max-width:200px!important;
+}
+
+#crowdC {
+  font-size:20px;
+  margin-top:5px;
+}
+
+.votingC {
+  max-width:400px;
+}
+
+@media (max-width: 550px) {
+
+.playing,  .soundCC {
+  height:50px;
+  width:auto;
+}
+  }
