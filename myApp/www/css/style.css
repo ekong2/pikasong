@@ -108,3 +108,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .title-image {
   left:10px;
 }
+
+.centered {
+  text-align: center;
+}
+
+.centeredButton {
+  padding: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}
