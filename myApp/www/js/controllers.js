@@ -42,6 +42,27 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('tutorialViewCtrl', function($scope){
+	$scope.text = 'Touch on each tab to see what they do!';
+	$scope.state = '';
+
+	$scope.playingTutorial = function(){
+		$scope.text = "Check out the song that's currently playing";
+		$scope.state = "playing";
+	};
+
+	$scope.voteTutorial = function(){
+		$scope.text = "Upvote songs you like";
+		$scope.state = "vote";
+	};
+
+	$scope.searchTutorial = function(){
+		$scope.text = "Search for songs on SoundCloud to add to the queue";
+		$scope.state = "search";
+	};
+
+})
+
 .controller('DashCtrl', function($scope, $firebaseObject, Ref, $rootScope, $state) {
 
   $rootScope.loggedIn = false;

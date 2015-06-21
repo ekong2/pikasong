@@ -206,6 +206,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .votingC {
   max-width:400px;
+  margin: auto;
 }
 
 @media (max-width: 550px) {
